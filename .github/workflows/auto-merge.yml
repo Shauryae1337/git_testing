@@ -1,0 +1,26 @@
+name: VULNERABLE Dependabot Auto Merge
+
+on: pull_request_target
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-merge:
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v1
+
+      - name: Approve & Merge
+        if: ${{ github.actor == 'dependabot[bot]' }}
+        run: |
+          echo "Actor: ${{ github.actor }}"
+          echo "Merging PR: ${{ github.event.pull_request.html_url }}"
+          gh pr review --approve "${{ github.event.pull_request.html_url }}"
+          gh pr merge --auto --squash "${{ github.event.pull_request.html_url }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
