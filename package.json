@@ -1,0 +1,13 @@
+{
+  "name": "octocorp-test-project",
+  "version": "1.0.0",
+  "description": "A test project for the dependency scanner.",
+  "dependencies": {
+    "express": "^4.17.1",
+    "octocorp-data-utils": "2.1.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^13.4.0",
+    "octocorp-frontend-linter": "1.0.0"
+  }
+}
