@@ -1,0 +1,6 @@
+# Public, safe dependency
+requests==2.31.0
+
+# Vulnerable internal dependencies
+octocorp-internal-auth
+octocorp-billing-api>=1.2.0
